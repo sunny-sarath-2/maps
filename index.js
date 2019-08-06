@@ -2,11 +2,16 @@ var express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/views'));
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html')
 
 app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname + "/index.html"));
+    res.render( "index.html",{data:"test"});
 })
 
 app.get("/submit", (req, res) => {
@@ -15,7 +20,9 @@ app.get("/submit", (req, res) => {
     req.query.lat, 
     req.query.lng] );
     process.stdout.on('data', function(data) { 
-        res.send(data.toString());//.toString() 
+    res.render( "index.html",{data:data.toString()});
+        
+        // res.send(data.toString());//.toString() 
     } )
 // res.send({check:'check'})    
 });

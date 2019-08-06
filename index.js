@@ -15,7 +15,7 @@ app.get("/submit", (req, res) => {
     req.query.lat, 
     req.query.lng] );
     process.stdout.on('data', function(data) { 
-        res.json(data);//.toString() 
+        res.send(data.toString());//.toString() 
     } )
 // res.send({check:'check'})    
 });

@@ -38,7 +38,7 @@ def MetersToPixels(mx, my, zoom):
 # mx = 28.657555
 # my = 77.174684
 # mx = 28.652371
-print("given latitude and longitude",sys.argv[1],sys.argv[2])
+
 mx, my = float(sys.argv[1]), float(sys.argv[2])
 # Meter per Pixel is dependent on latitude
 MeterPerPixel = math.cos(mx * math.pi/180) * earthc / map_width

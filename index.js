@@ -20,7 +20,7 @@ app.get("/submit", (req, res) => {
     req.query.lat, 
     req.query.lng] );
     process.stdout.on('data', function(data) { 
-    res.render( "index.html",{data:data.toString()});
+    res.render( "index.html",{data:data.toString(),lat:req.query.lat,lng:req.query.lng});
         
         // res.send(data.toString());//.toString() 
     } )

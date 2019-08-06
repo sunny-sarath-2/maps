@@ -11,14 +11,14 @@
   </head>
 
 <body>
-<form action="/submit" method="GET" onsubmit="event.preventDefault();" >
+<form action="/submit" method="GET" >
     latitude<br>
   <input type="text" name="lat" value="" id="lat">
   <br>
   longitude<br>
   <input type="text" name="lng" value="" id="lng">
   <br><br>
-  <input type="submit" value="Submit" onclick="initMap()">
+  <input type="submit" value="Submit">
 </form> 
 
       <div id="map"></div>
@@ -27,7 +27,7 @@
     function initMap() {
       // The location of Uluru
       console.log(document.getElementById("lat").value,document.getElementById("lng").value)
-      var uluru = {lat: document.getElementById("lat").value , lng: document.getElementById("lng").value };
+      var uluru = {lat: 1.22 , lng:1.22 };
       // The map, centered at Uluru
       var map = new google.maps.Map(
           document.getElementById('map'), {zoom: 4, center: uluru});

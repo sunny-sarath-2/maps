@@ -12,24 +12,31 @@
   
   <body>
 <h2>Edge Calculations</h2>
-<form action="/submit" method="GET" >
+<form action="/submit" method="GET"  >
     latitude (E.g, 34.020926, 34.023346, 34.022705, 34.027933)<br>
   <input type="text" name="lat" value="" id="lat">
   <br>
   longitude (E.g, -118.404197, -118.418059, -118.404540,  -118.398873)<br>
   <input type="text" name="lng" value="" id="lng">
   <br><br>
-  <input type="submit" value="Submit">
+  <input type="submit"   value="Submit">
   <h5>Calculated Edges</h5>
   <p>given latitude <%= lat%> and longitude <%= lng %></p>
   <p>Data Sets: <%= data %></p></form> 
       <div id="map"></div>
 <script>
+
     // Initialize and add the map
     function initMap() {
+      var vars = {};
+    var parts = window.location.href;
+    var url = new URL(parts);
+var c = url.searchParams.get("lat");
+var d = url.searchParams.get("lng");
+   // console.log(parts)
       // The location of Uluru
-      console.log(document.getElementById("lat").value,document.getElementById("lng").value)
-      var uluru = {lat: 34.0522 , lng:-118.2437 };
+      
+      var uluru = {lat: c?Number(c):34.122 , lng:d?Number(d):-118.2437 };
       // The map, centered at Uluru
       var map = new google.maps.Map(
           document.getElementById('map'), {zoom: 11, center: uluru});
